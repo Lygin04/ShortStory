@@ -10,9 +10,11 @@ public class Dialogs : ScriptableObject
     public class Dialog
     {
         [SerializeField] private string _author;
+        [SerializeField] private Sprite _avatar;
         [SerializeField] [TextArea(1, 5)] private string _text;
 
         public string Name => _author;
+        public Sprite Avatar => _avatar;
         public string Text => _text;
     }
 

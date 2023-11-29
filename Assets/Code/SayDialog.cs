@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Task = System.Threading.Tasks.Task;
 
 public class SayDialog : MonoBehaviour
@@ -8,6 +9,8 @@ public class SayDialog : MonoBehaviour
     [SerializeField] private Dialogs _dialog;
     [SerializeField] private TextMeshProUGUI _author;
     [SerializeField] private TextMeshProUGUI _text;
+
+    [SerializeField] private Image _avatar;
     
     private int index;
     private bool isWrite;
@@ -26,6 +29,7 @@ public class SayDialog : MonoBehaviour
         if(_dialog.Get.Length == index || isWrite) return;
 
         _author.text = _dialog.Get[index].Name;
+        _avatar.sprite = _dialog.Get[index].Avatar;
         isWrite = await WriteDialog(_dialog.Get[index].Text, _text);  
         index++;
     }
